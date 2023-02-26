@@ -6,7 +6,6 @@
 #include "ENITIO_EspNOW.h"
 #include "ENITIO_OLED.h"
 #include "ENITIO_player_bluetooth.h"
-
 #include "MainMenu.h"
 #include "Profile.h"
 #include "TreasureHuntPlayer.h"
@@ -77,6 +76,8 @@ void setup() {
 
       Serial.println(my_MAC_address);
 
+      pinMode(LED_BUILTIN, OUTPUT);
+
       xTaskCreatePinnedToCore(
                       backgroundTaskCode,   /* Task function. */
                       "backgroundTask",     /* name of task. */
@@ -91,6 +92,7 @@ void loop() {
   // First check if ESP is connected to WiFi
   if ((WiFi.status() != WL_CONNECTED) && (millis() - last_disconnected_time > 2000)) {
     Serial.println("Lost WiFi Connection.. attempting to reconnect");
+    digitalWrite(LED_BUILTIN, HIGH); // lights up the built-in LED when the WiFi connection is lost
     dbc.startWiFiConnection();
     last_disconnected_time = millis();
   }
