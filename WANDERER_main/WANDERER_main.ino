@@ -101,6 +101,7 @@ void loop() {
   else {
     digitalWrite(LED_BUILTIN, LOW);
   }
+<<<<<<< Updated upstream
   if (currentProcess == MainMenuProcess){
     My_MainMenu.MainMenuLoop();
   }
@@ -121,5 +122,30 @@ void loop() {
   }
   else {
     currentProcess = MainMenuProcess;
+=======
+  
+  switch (currentProcess) {
+    case MainMenuProcess:
+      My_MainMenu.MainMenuLoop();
+      break;
+    case TreasureHuntProcess:
+      PLAYER.gameMainLoop();
+      break;
+    case ProfileProcess:
+      My_Profile.ProfileLoop();
+      break;
+    case AdminProcess:
+      My_Admin.AdminLoop();
+      break;
+    case CreditProcess:
+      My_Credits.CreditsLoop();
+      break;
+    case MACAddressProcess:
+      My_MACAddress.MACAddressLoop();
+      break;
+    default:
+      currentProcess = MainMenuProcess;
+      break;
+>>>>>>> Stashed changes
   }
 }

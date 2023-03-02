@@ -12,8 +12,8 @@
 #define EAP_ANONYMOUS_IDENTITY  ""
 #define EAP_IDENTITY  "@student.main.ntu.edu.sg"
 #define EAP_PASSWORD  ""
-#define HOME_WIFI_SSID ""
-#define HOME_WIFI_PASSWORD ""
+#define HOME_WIFI_SSID "garage@eee"
+#define HOME_WIFI_PASSWORD "garage@eee"
 
 const char *ssid = "NTUSECURE";
 int wifi_reconnect_counter = 0;
@@ -191,8 +191,8 @@ class DBConnection {
     
     public:
         void startWiFiConnection() {
-            // WiFi.begin(HOME_WIFI_SSID, HOME_WIFI_PASSWORD);
-            WiFi.begin(ssid, WPA2_AUTH_PEAP, EAP_ANONYMOUS_IDENTITY, EAP_IDENTITY, EAP_PASSWORD);
+            WiFi.begin(HOME_WIFI_SSID, HOME_WIFI_PASSWORD);
+            //WiFi.begin(ssid, WPA2_AUTH_PEAP, EAP_ANONYMOUS_IDENTITY, EAP_IDENTITY, EAP_PASSWORD);
         }
         bool connectToWiFi() {
             // returns True if connected, False if timeout
